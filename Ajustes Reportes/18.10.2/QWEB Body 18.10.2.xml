@@ -43,15 +43,34 @@
       <br/></div>
             <!-- Dirección Personalizada -->
             <t t-if="doc.state in ['draft', 'sent']">
-                <div class="mb-2" style="width: 50%;">
-                    <strong t-field="doc.partner_id.name"/><br/>
-                    <span t-field="doc.partner_id.street"/><br t-if="doc.partner_id.street"/>
-                    <span t-field="doc.partner_id.street2"/><br t-if="doc.partner_id.street2"/>
+                <div class="mb-2" style="width: 100%;">
+                <strong t-field="doc.partner_id.name"/><br/>
+                <!-- Línea 2: Street + Street2 -->
+                <t t-if="doc.partner_id.street">
+                    <span t-field="doc.partner_id.street"/>
+                </t>
+                <t t-if="doc.partner_id.street2">
+                    , <span t-field="doc.partner_id.street2"/>
+                </t>
+                <br/>
+                <!-- Línea 3: City, State, Country ZIP -->
+                <t t-if="doc.partner_id.city">
                     <span t-field="doc.partner_id.city"/>
-                    <t t-if="doc.partner_id.state_id">, <span t-field="doc.partner_id.state_id.name"/></t>
-                    <t t-if="doc.partner_id.zip"> <span t-field="doc.partner_id.zip"/></t><br/>
-                    <span t-field="doc.partner_id.country_id.name"/>
-                    <t t-if="doc.partner_id.vat"><br/>EIN: <span t-field="doc.partner_id.vat"/></t>
+                </t>
+                <t t-if="doc.partner_id.state_id">
+                    , <span t-field="doc.partner_id.state_id.name"/>
+                </t>
+                <t t-if="doc.partner_id.country_id">
+                    , <span t-field="doc.partner_id.country_id.name"/>
+                </t>
+                <t t-if="doc.partner_id.zip">
+                    <span> </span><span t-field="doc.partner_id.zip"/>
+                </t>
+                <br/>
+                <!-- Línea 4: VAT -->
+                <t t-if="doc.partner_id.vat">
+                    EIN: <span t-field="doc.partner_id.vat"/>
+                </t>
                 </div>
             </t>
             <!-- Fin de dirección personalizada -->
