@@ -1,0 +1,15 @@
+<data>
+  <data>
+    <xpath position="replace" expr="/t[@t-name='sale.report_saleorder_document_copy_4_copy_1_copy_1']//t[@t-call='web.external_layout']/div/div[5]" meta-class="oe_structure"/>
+    <xpath position="after" expr="/t[@t-name='sale.report_saleorder_document_copy_4_copy_1_copy_1']//t[@t-call='web.external_layout']/div/p">
+      <div class="oe_structure">
+        <span style="font-size: 8px;">F3.1</span>
+      </div>
+    </xpath>
+  </data>
+  <data>
+    <xpath position="attributes" expr="/t[@t-name='sale.report_saleorder_document_copy_4_copy_1_copy_1']//t[@t-call='web.external_layout']//span[@t-field='doc.validity_date']" meta-class="m-0" meta-t-field="doc.validity_date">
+      <attribute name="style">font-weight: bolder;</attribute>
+    </xpath>
+  </data>
+</data>
