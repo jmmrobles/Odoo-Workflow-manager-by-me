@@ -41,7 +41,20 @@
         </t><div class="page">
             <div class="oe_structure">
       <br/></div>
-
+            <!-- Dirección Personalizada -->
+            <t t-if="doc.state in ['draft', 'sent']">
+                <div class="mb-2" style="width: 50%;">
+                    <strong t-field="doc.partner_id.name"/><br/>
+                    <span t-field="doc.partner_id.street"/><br t-if="doc.partner_id.street"/>
+                    <span t-field="doc.partner_id.street2"/><br t-if="doc.partner_id.street2"/>
+                    <span t-field="doc.partner_id.city"/>
+                    <t t-if="doc.partner_id.state_id">, <span t-field="doc.partner_id.state_id.name"/></t>
+                    <t t-if="doc.partner_id.zip"> <span t-field="doc.partner_id.zip"/></t><br/>
+                    <span t-field="doc.partner_id.country_id.name"/>
+                    <t t-if="doc.partner_id.vat"><br/>EIN: <span t-field="doc.partner_id.vat"/></t>
+                </div>
+            </t>
+            <!-- Fin de dirección personalizada -->
             <h2>
                 <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice # </span>
                 <span t-elif="doc.state in ['draft','sent']">Quotation # </span>
